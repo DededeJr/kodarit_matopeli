@@ -16,3 +16,7 @@
   height: 25px;
   border: 1px solid olive;
 }
+
+.snake {
+  background: red;
+}
