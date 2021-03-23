@@ -4,6 +4,7 @@
  justify-content: center;
  align-items: center;
  padding-top: 30px;
+ background: gray;
 }
 
 .Snake-row {
@@ -14,9 +15,12 @@
 .tile {
   width: 25px;
   height: 25px;
-  border: 1px solid olive;
 }
 
 .snake {
-  background: red;
+  background: purple;
+}
+
+.food:after {
+  content: "🍫";
 }
