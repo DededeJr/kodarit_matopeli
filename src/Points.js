@@ -1,6 +1,6 @@
 import React from "react";
 
-const Points = ({}) => {
+const Points = ({points}) => {
   return <div className="Points">{points} pistettä</div>;
 };
 
