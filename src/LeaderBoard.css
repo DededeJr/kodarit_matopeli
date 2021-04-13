@@ -1,0 +1,9 @@
+.LeaderBoard {
+  margin-top: 20px;
+}
+
+.LeaderBoard-header {
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 5px;
+}
