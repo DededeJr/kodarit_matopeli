@@ -18,7 +18,9 @@ const LeaderBoard = () => {
       <div className="LeaderBoard-header">Top 5</div>
       <div className="LeaderBoard-points">
         {sortedPointsList.slice(0, 5).map((points, i) => (
-          <div key={`${points}-${i}`}>{points} Pistettä</div>
+          <div key={`${points.points}-${i}`}>
+            {points.name} Pistettä {points.points}
+          </div>
         ))}
       </div>
     </div>
