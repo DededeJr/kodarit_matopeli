@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/kodarit_matopeli/static/css/main.a5882550.chunk.css",
+    "main.js": "/kodarit_matopeli/static/js/main.5f246678.chunk.js",
+    "main.js.map": "/kodarit_matopeli/static/js/main.5f246678.chunk.js.map",
+    "runtime-main.js": "/kodarit_matopeli/static/js/runtime-main.6db020cb.js",
+    "runtime-main.js.map": "/kodarit_matopeli/static/js/runtime-main.6db020cb.js.map",
+    "static/js/2.e598a569.chunk.js": "/kodarit_matopeli/static/js/2.e598a569.chunk.js",
+    "static/js/2.e598a569.chunk.js.map": "/kodarit_matopeli/static/js/2.e598a569.chunk.js.map",
+    "index.html": "/kodarit_matopeli/index.html",
+    "static/css/main.a5882550.chunk.css.map": "/kodarit_matopeli/static/css/main.a5882550.chunk.css.map",
+    "static/js/2.e598a569.chunk.js.LICENSE.txt": "/kodarit_matopeli/static/js/2.e598a569.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6db020cb.js",
+    "static/js/2.e598a569.chunk.js",
+    "static/css/main.a5882550.chunk.css",
+    "static/js/main.5f246678.chunk.js"
+  ]
+}
