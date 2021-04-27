@@ -11,7 +11,7 @@ const LeaderBoard = () => {
     setPointsList(getSnakePoints());
   });
 
-  const sortedPointsList = pointsList.sort((a, b) => b - a);
+  const sortedPointsList = pointsList.sort((a, b) => b.points - a.points);
 
   return (
     <div className="LeaderBoard">
@@ -19,7 +19,7 @@ const LeaderBoard = () => {
       <div className="LeaderBoard-points">
         {sortedPointsList.slice(0, 5).map((points, i) => (
           <div key={`${points.points}-${i}`}>
-            {points.name} Pistettä {points.points}
+            {points.name} {points.points}
           </div>
         ))}
       </div>
