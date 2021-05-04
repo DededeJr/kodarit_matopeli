@@ -34,3 +34,7 @@
 .food:after {
   content: "🍫";
 }
+
+.obstacle {
+  background: blue;
+}
