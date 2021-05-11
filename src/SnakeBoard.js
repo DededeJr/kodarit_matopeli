@@ -3,17 +3,24 @@ import {useInterval, range} from "./utils";
 import "./SnakeBoard.css";
 
 const SnakeBoard = ({points, setPoints}) => {
-  const height = 15;
-  const width = 15;
-  var initialRows = [];
-  for (var i = 0; i < height; i++) {
-    initialRows[i] = [];
-    for (var j = 0; j < width; j++) {
-      initialRows[i][j] = "blank";
+  const [height, setHeight] = useState(
+    localStorage.getItem("snake-board-size") || 15
+  );
+  const [width, setWidth] = useState(
+    localStorage.getItem("snake-board-size") || 15
+  );
+  const getInitialRows = () => {
+    var initialRows = [];
+    for (var i = 0; i < height; i++) {
+      initialRows[i] = [];
+      for (var j = 0; j < width; j++) {
+        initialRows[i][j] = "blank";
+      }
     }
-  }
+    return initialRows;
+  };
 
-  const obstacles = [
+  const getObstacles = () => [
     {name: "tyhjä", location: []},
     {
       name: "keski",
@@ -33,12 +40,18 @@ const SnakeBoard = ({points, setPoints}) => {
     },
     {
       name: "oma",
-      location: [{x: 2, y: 5}]
+      location: [
+        {x: 2, y: 5},
+        {x: 2, y: 4},
+        {x: 2, y: 3},
+        {x: 3, y: 3},
+        {x: 4, y: 3}
+      ]
     }
   ];
 
   const randomObstacle = () =>
-    obstacles[Math.floor(Math.random() * obstacles.length)];
+    getObstacles()[Math.floor(Math.random() * getObstacles().length)];
 
   const randomPosition = () => {
     const position = {
@@ -53,13 +66,14 @@ const SnakeBoard = ({points, setPoints}) => {
     return position;
   };
 
-  const [obstacle] = useState(randomObstacle());
-  const [rows, setRows] = useState(initialRows);
+  const [obstacle, setObstacle] = useState(randomObstacle);
+  const [rows, setRows] = useState(getInitialRows);
   const [snake, setSnake] = useState([{x: 1, y: 1}]);
   const [direction, setDirection] = useState("right");
   const [food, setFood] = useState(randomPosition);
   const [intervalId, setIntervalId] = useState();
   const [isGameOver, setIsGameOver] = useState(false);
+  const [startGame, setStartGame] = useState(null);
 
   const changeDirectionWithKeys = e => {
     const {keyCode} = e;
@@ -88,7 +102,7 @@ const SnakeBoard = ({points, setPoints}) => {
   ));
 
   const displaySnake = () => {
-    const newRows = initialRows;
+    const newRows = getInitialRows();
     snake.forEach(tile => {
       newRows[tile.x][tile.y] = "snake";
     });
@@ -162,6 +176,31 @@ const SnakeBoard = ({points, setPoints}) => {
 
   return (
     <div className="Snake-board">
+      {!startGame && (
+        <>
+          <div>The map is {width} tiles big</div>
+          <div>You can change map size here:</div>
+          <input
+            className="Board-size"
+            placeholder="Size from 10-100"
+            type="number"
+            onChange={e => {
+              const size = e.target.value;
+              if (size <= 100 && size >= 10) {
+                console.log("OK", size);
+                setWidth(size);
+                setHeight(size);
+                localStorage.setItem("snake-board-size", size);
+              } else {
+                console.error("bad", size);
+              }
+            }}
+          />
+          <button className="Start-game" onClick={setStartGame}>
+            Start
+          </button>
+        </>
+      )}
       {displayRows}
       {isGameOver && <div className="Game-over">Game over!</div>}
     </div>
