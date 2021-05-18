@@ -38,3 +38,7 @@
 .obstacle {
   background: blue;
 }
+
+.Error {
+  color: red;
+}
